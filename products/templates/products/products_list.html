@@ -1,0 +1,50 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center mb-4">
+        
+        <h1>Nos Produits</h1>
+    </div>
+</div>
+
+<div class="row">
+    {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="bg-light text-center py-5" style="height: 200px;">Pas d'image</div>
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-dark">
+                            {{ product.name }}
+                        </a>
+                    </h5>
+                    <p class="card-text text-primary fw-bold">{{ product.price }} DH</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Catégorie : 
+                            <a href="{% url 'category_detail' product.category.id %}" class="badge bg-secondary text-decoration-none">
+                                {{ product.category.name }}
+                            </a>
+                        </small>
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-primary w-100">Détails</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">Aucun produit disponible pour le moment.</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

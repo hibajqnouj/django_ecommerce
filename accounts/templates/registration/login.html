@@ -1,0 +1,96 @@
+{% extends 'products/layout.html' %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block content %}
+<style>
+    /* Style personnalisé pour rendre le formulaire plus moderne */
+    .login-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+    }
+
+    .login-title {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    /* Amélioration des champs générés par Django (form.as_p) */
+    form p {
+        margin-bottom: 20px;
+    }
+
+    form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    form input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease;
+    }
+
+    form input:focus {
+        border-color: #0d6efd;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-top: 10px;
+    }
+
+    .login-footer {
+        text-align: center;
+        margin-top: 25px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+</style>
+
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-5">
+        <div class="login-container">
+            <h2 class="login-title">Content de vous revoir !</h2>
+
+            <form method="post">
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+
+                <div class="text-end mb-3">
+                    <a href="{% url 'password_reset' %}" class="text-decoration-none small text-primary">
+                        Mot de passe oublié ?
+                    </a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-login">
+                    Se connecter
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p class="mb-0">
+                    Vous n’avez pas encore de compte ? 
+                    <a href="{% url 'signup' %}" class="fw-bold text-decoration-none">Créer un compte</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

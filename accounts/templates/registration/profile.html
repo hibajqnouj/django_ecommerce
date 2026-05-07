@@ -1,0 +1,121 @@
+{% extends 'products/layout.html' %}
+
+{% block title %} Mon profil {% endblock %}
+
+{% block content %}
+<style>
+    .profile-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border: none;
+    }
+    .profile-header {
+        background: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%);
+        padding: 40px;
+        text-align: center;
+        color: white;
+    }
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-size: 2.5rem;
+        color: #0d6efd;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .info-label {
+        font-weight: 600;
+        color: #6c757d;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    .info-value {
+        font-size: 1.1rem;
+        color: #212529;
+        font-weight: 500;
+    }
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        border-radius: 20px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <h2 class="mb-0">{{ user.username }}</h2>
+                    <p class="opacity-75">Membre depuis {{ user.date_joined|date:"F Y" }}</p>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row mb-4">
+                        <div class="col-12 mb-3">
+                            <label class="info-label">Adresse Email</label>
+                            <div class="info-value">
+                                {% if user.email %}
+                                    {{ user.email }}
+                                {% else %}
+                                    <span class="text-muted italic">Non renseignée</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6 mb-3">
+                            <label class="info-label">Statut Staff</label>
+                            <div>
+                                {% if user.is_staff %}
+                                    <span class="badge bg-success status-badge">Oui</span>
+                                {% else %}
+                                    <span class="badge bg-secondary status-badge">Non</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <label class="info-label">Superutilisateur</label>
+                            <div>
+                                {% if user.is_superuser %}
+                                    <span class="badge bg-primary status-badge">Activé</span>
+                                {% else %}
+                                    <span class="badge bg-secondary status-badge">Désactivé</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <a href="{% url 'password_change' %}" class="btn btn-outline-primary btn-sm px-4">
+                            <i class="bi bi-key"></i> Modifier le mot de passe
+                        </a>
+                        <button class="btn btn-light btn-sm px-4 border text-muted" disabled>
+                            <i class="bi bi-pencil"></i> Modifier le profil
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center mt-4 text-muted small">
+                <i class="bi bi-shield-lock"></i> Cette page est sécurisée et accessible uniquement par vous.
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

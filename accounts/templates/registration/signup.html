@@ -1,0 +1,122 @@
+{% extends 'products/layout.html' %}
+
+{% block title %} Créer un compte {% endblock %}
+
+{% block content %}
+<style>
+    /* Conteneur principal avec ombre douce */
+    .register-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-bottom: 50px;
+    }
+
+    .register-title {
+        font-weight: 700;
+        color: #0d6efd; /* Couleur verte "success" */
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .register-subtitle {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+    }
+
+    /* Stylisation des champs Django form.as_p */
+    form p {
+        margin-bottom: 18px;
+    }
+
+    form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #444;
+        font-size: 0.9rem;
+    }
+
+    form input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    form input:focus {
+        border-color: #0d6efd;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
+    }
+
+    /* Aide pour le mot de passe (si Django en génère) */
+    .helptext {
+        display: block;
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        background-color: #0d6efd;
+        border: none;
+        margin-top: 15px;
+    }
+
+    .btn-register:hover {
+        background-color: #0d6efd;
+    }
+
+    .register-footer {
+        text-align: center;
+        margin-top: 25px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+    /* Style pour les erreurs de formulaire */
+    .errorlist {
+        color: #dc3545;
+        list-style: none;
+        padding-left: 0;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="row justify-content-center align-items-center" style="min-height: 85vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="register-container">
+            <h2 class="register-title">Bienvenue !</h2>
+            <p class="register-subtitle">Créez votre compte en quelques secondes</p>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-success btn-register">
+                    Créer mon compte
+                </button>
+            </form>
+
+            <div class="register-footer">
+                <p class="mb-0">
+                    Vous avez déjà un compte ? 
+                    <a href="{% url 'login' %}" class="fw-bold text-decoration-none text-success">Se connecter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
