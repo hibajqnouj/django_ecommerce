@@ -1,10 +1,10 @@
-# 🛒 E-Commerce Django — Authentification & Catalogue
+#  E-Commerce Django — Authentification & Catalogue
 
 > Projet Django e-commerce avec système d'authentification complet, catalogue de produits, catégories et panier.
 
 ---
 
-## 📸 Aperçu
+##  Aperçu
 
 | Page | Screenshot |
 |------|------------|
@@ -14,13 +14,12 @@
 | Connexion | ![](screenshots/login.png) |
 | Profil | ![](screenshots/profile.png) |
 | Panier | ![](screenshots/cart.png) |
-| Administration | ![](screenshots/admin.png) |
+| Categorie | ![](screenshots/categorie.png) |
 
-> 📌 *Les screenshots seront ajoutés prochainement dans le dossier `screenshots/`*
 
 ---
 
-## 🚀 Fonctionnalités
+##  Fonctionnalités
 
 - **Catalogue produits** — liste, détail, images
 - **Catégories** — navigation par catégorie
@@ -32,7 +31,7 @@
 
 ---
 
-## 🏗️ Architecture du projet
+##  Architecture du projet
 
 ```
 ecommerce/
@@ -69,7 +68,7 @@ ecommerce/
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Prérequis
 
@@ -129,7 +128,7 @@ Ouvrir : [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
 
-## 🗺️ URLs disponibles
+##  URLs disponibles
 
 | URL | Description |
 |-----|-------------|
@@ -149,7 +148,7 @@ Ouvrir : [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
 
-## 🗄️ Modèles
+##  Modèles
 
 ### `Category`
 | Champ | Type |
@@ -171,7 +170,7 @@ Ouvrir : [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
 
-## 🔐 Authentification
+##  Authentification
 
 - **Inscription** : `RegisterForm` basé sur `UserCreationForm` + champ email
 - **Connexion / Déconnexion** : vues Django natives
@@ -197,7 +196,7 @@ request.session["cart"] = cart
 
 ---
 
-## 🐳 Docker — MySQL
+##  Docker — MySQL
 
 ```bash
 docker-compose up -d    # démarrer
@@ -206,7 +205,7 @@ docker-compose down     # arrêter
 
 ---
 
-## 👤 Auteur
+##  Auteur
 
 | | |
 |--|--|
@@ -217,6 +216,4 @@ docker-compose down     # arrêter
 
 ---
 
-## 📄 Licence
 
-Projet académique — EMI de Rabat © 2026
