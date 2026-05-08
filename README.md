@@ -176,11 +176,7 @@ Ouvrir : [http://127.0.0.1:8000](http://127.0.0.1:8000)
 - **Connexion / Déconnexion** : vues Django natives
 - **Protection des vues** : décorateur `@login_required`
 
-```python
-LOGIN_REDIRECT_URL  = "profile"       # après connexion
-LOGOUT_REDIRECT_URL = "product_list"  # après déconnexion
-LOGIN_URL           = "login"         # si non connecté
-```
+
 
 ---
 
