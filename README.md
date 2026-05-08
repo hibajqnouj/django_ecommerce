@@ -209,8 +209,7 @@ docker-compose down     # arrêter
 
 | | |
 |--|--|
-| Nom | _à compléter_ |
-| École | EMI de Rabat |
+| Nom |Janouj|
 | Cours | Atelier Django |
 | Année | 2025-2026 |
 
